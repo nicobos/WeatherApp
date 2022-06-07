@@ -17,4 +17,13 @@ class GeoCodeRepo @Inject constructor(
             limit = 5
         )
     }
+
+    override suspend fun reverseGeocode(lat: Double, lon: Double): GeoCodeResponse {
+        return geoService.reverseGeocode(
+            lat = lat,
+            lon = lon,
+            appid = BuildConfig.weather_api_key,
+            limit = 5
+        ).first()
+    }
 }

@@ -13,5 +13,13 @@ interface GeoService {
         @Query("limit") limit: Int = 5
     ): List<GeoCodeResponse>
 
+    @GET("geo/1.0/reverse")
+    suspend fun reverseGeocode(
+        @Query("lat") lat: Double,
+        @Query("lon") lon: Double,
+        @Query("limit") limit: Int = 5,
+        @Query("appid") appid: String
+    ): List<GeoCodeResponse>
+
 
 }

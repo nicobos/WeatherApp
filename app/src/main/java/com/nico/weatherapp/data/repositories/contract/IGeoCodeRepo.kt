@@ -6,4 +6,6 @@ interface IGeoCodeRepo {
 
     suspend fun geocodeLocationName(query: String): List<GeoCodeResponse>
 
+    suspend fun reverseGeocode(lat: Double, lon: Double): GeoCodeResponse
+
 }

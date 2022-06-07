@@ -16,6 +16,7 @@
         android:minWidth="300dp"
         android:padding="5dp"
         android:paddingVertical="8dp"
+        android:focusableInTouchMode="true"
         android:textColor="@color/black"
         android:textSize="16sp">
 
