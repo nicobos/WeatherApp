@@ -11,7 +11,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-@Config(sdk = [(Build.VERSION_CODES.P)], manifest = "../app/src/test/AndroidManifest.xml")
+@Config(sdk = [(Build.VERSION_CODES.P)])
 class LocationRepoTest {
 
     lateinit var locationRepo: ILocationRepo

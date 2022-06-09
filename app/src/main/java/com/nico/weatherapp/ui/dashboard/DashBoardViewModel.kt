@@ -30,7 +30,7 @@ class DashBoardViewModel @Inject constructor(
     private val _currentLocation = MutableLiveData<Location>()
     val currentLocation: LiveData<Location> = _currentLocation
 
-    private val _showLoading = MutableLiveData<Boolean>(false)
+    private val _showLoading = MutableLiveData<Boolean>()
     val showLoading: LiveData<Boolean> = _showLoading
 
     fun getGeoCodeRepo(): IGeoCodeRepo {
