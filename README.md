@@ -23,6 +23,7 @@ Geocoding API - Geocoding device location to friendly name and reverse geocoding
    - AndroidX libraries
    - Repository pattern 
    - Coil (Image loading)
+   - Permissions (location)
    - Flows / Flow operators
    - Hilt dependancy injection 
    - Material 3 theme implementation
