@@ -33,9 +33,9 @@ import timber.log.Timber
 @SuppressLint("ResourceType")
 class GeoCodeAdapter(
     context: Context,
-    val geoCodeRepository: IGeoCodeRepo,
-    val listItemResId: Int,
-    val onItemClick: (Location) -> Unit
+    private val geoCodeRepository: IGeoCodeRepo,
+    private val listItemResId: Int,
+    private val onItemClick: (Location) -> Unit
 ) : ArrayAdapter<GeoCodeResponse>(context, android.R.id.text1), Filterable {
 
     private var mResultList: List<GeoCodeResponse>? = null
@@ -72,11 +72,13 @@ class GeoCodeAdapter(
         holder.text2?.text = secondary
 
         view.setOnClickListener {
-            onItemClick.invoke(Location(
+            onItemClick.invoke(
+                Location(
                 name = item.name,
                 lat = item.lat,
                 lon = item.lon
-            ))
+            )
+            )
         }
         return view
     }

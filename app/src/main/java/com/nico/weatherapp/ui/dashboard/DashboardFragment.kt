@@ -1,39 +1,42 @@
 package com.nico.weatherapp.ui.dashboard
 
 import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.*
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.nico.weatherapp.R
 import com.nico.weatherapp.common.extensions.doIfError
 import com.nico.weatherapp.common.extensions.doIfSuccess
+import com.nico.weatherapp.common.permissions.PermissionsManager
 import com.nico.weatherapp.databinding.FragmentDashboardBinding
 import com.nico.weatherapp.ui.dashboard.adapters.GeoCodeAdapter
-import com.nico.weatherapp.ui.models.Location
+import com.nico.weatherapp.ui.dashboard.adapters.HourlyDataAdapter
+import com.nico.weatherapp.ui.dialogs.IDialogManager
 import dagger.hilt.android.AndroidEntryPoint
 import weather.android.dvt.co.za.weather.WeatherInfo.DataModels.WeatherRanges
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
+    private val binding get() = _binding!!
+
+    @Inject
+    lateinit var permissionsManager: PermissionsManager
+
+    @Inject
+    lateinit var dialogManager: IDialogManager
 
     private val dashBoardViewModel by viewModels<DashBoardViewModel>()
 
-    private val binding get() = _binding!!
-
-    lateinit var geoCodeAdapter: GeoCodeAdapter
-
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var geoCodeAdapter: GeoCodeAdapter
+    private lateinit var hourlyDataAdapter: HourlyDataAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,11 +45,11 @@ class DashboardFragment : Fragment() {
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        hourlyDataAdapter = HourlyDataAdapter()
+        binding.hourlyWeatherList.adapter = hourlyDataAdapter
 
         setHasOptionsMenu(true)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,7 +58,7 @@ class DashboardFragment : Fragment() {
         getLastLocation()
 
         dashBoardViewModel.currentLocation.observe(viewLifecycleOwner) {
-            binding?.location?.text = it.name
+            binding.location.text = it.name
         }
 
         dashBoardViewModel.showLoading.observe(viewLifecycleOwner) {
@@ -79,9 +82,15 @@ class DashboardFragment : Fragment() {
                 binding.weatherIcon.setImageResource(
                     WeatherRanges.getImageResource(it?.weatherConditionId)
                 )
+                it?.let {
+                    hourlyDataAdapter.updateData(it.hourlyData)
+                }
+
+                binding.sunrise.text = it?.sunrise
+                binding.sunset.text = it?.sunset
             }
 
-            result.doIfError { error, throwable ->
+            result.doIfError { error, _ ->
                 Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
             }
 
@@ -97,13 +106,12 @@ class DashboardFragment : Fragment() {
 
         geoCodeAdapter = GeoCodeAdapter(
             requireContext(),
-            dashBoardViewModel.geoCodeRepo,
+            dashBoardViewModel.getGeoCodeRepo(),
             android.R.layout.simple_expandable_list_item_2
         ) {
             dashBoardViewModel.setCurrentLocation(it)
             searchBar.dismissDropDown()
         }
-
         searchBar.setAdapter(geoCodeAdapter)
     }
 
@@ -115,48 +123,42 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    fun getLastLocation() {
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            checkPermissions()
-            return
-        }
-        fusedLocationClient.lastLocation.addOnSuccessListener {
-            it?.let{
-                dashBoardViewModel.getLocationFromLatLon(
-                    lat = it.latitude,
-                    lon = it.longitude
-                )
+    private fun getLastLocation() {
+        permissionsManager.hasLocationPermissionGranted { result, showRationale ->
+            when (result) {
+                true -> {
+                    dashBoardViewModel.setWeatherDataToCurrentLocation()
+                }
+                false -> {
+                    checkPermissions()
+                }
+            }
+
+            if (showRationale) {
+                dialogManager.showDialogPermissionRationale { }
             }
 
         }
     }
 
     private fun checkPermissions() {
-        val locationPermissionRequest = registerForActivityResult(
+        val requestPermissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions()
         ) { permissions ->
             when {
                 permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-                        getLastLocation()
+                    getLastLocation()
                 }
                 permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
-                        getLastLocation()
+                    getLastLocation()
                 }
                 else -> {
-
 
                 }
             }
         }
 
-        locationPermissionRequest.launch(
+        requestPermissionLauncher.launch(
             arrayOf(
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION

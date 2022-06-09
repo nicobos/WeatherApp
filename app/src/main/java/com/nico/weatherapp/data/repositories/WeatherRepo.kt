@@ -1,11 +1,11 @@
 package com.nico.weatherapp.data.repositories
 
 import com.nico.weatherapp.BuildConfig
-import com.nico.weatherapp.data.models.WeatherUI
-import com.nico.weatherapp.data.models.toWeatherUI
 import com.nico.weatherapp.data.repositories.contract.IWeatherRepo
 import com.nico.weatherapp.data.service.Response
 import com.nico.weatherapp.data.service.WeatherService.WeatherService
+import com.nico.weatherapp.ui.models.WeatherUI
+import com.nico.weatherapp.ui.models.toWeatherUI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -22,7 +22,7 @@ class WeatherRepo @Inject constructor(
         lon: Double
     ): Flow<Response<WeatherUI?>> =
         flow {
-            val exclude = "minutely,hourly,daily,alerts"
+            val exclude = "minutely,daily,alerts"
             val response = weatherService.getWeatherData(
                 lat = lat,
                 lon = lon,
@@ -33,10 +33,12 @@ class WeatherRepo @Inject constructor(
             emit(Response.Success(response.toWeatherUI()) as Response<WeatherUI>)
 
         }.catch { throwable ->
-            emit(Response.Failure(
+            emit(
+                Response.Failure(
                     message = throwable.message,
                     throwable = throwable
-            ))
+                )
+            )
         }.flowOn(
             Dispatchers.IO
         )

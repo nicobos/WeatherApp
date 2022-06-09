@@ -21,5 +21,4 @@ interface GeoService {
         @Query("appid") appid: String
     ): List<GeoCodeResponse>
 
-
 }

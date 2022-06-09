@@ -21,7 +21,7 @@ class APIModule {
     private val CONNECTION_TIMEOUT = 20L
     private val READ_TIMEOUT = 2 * CONNECTION_TIMEOUT
 
-    fun getMainOkHttpClient() = OkHttpClient.Builder()
+    private fun getMainOkHttpClient() = OkHttpClient.Builder()
         .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
         .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
         .addInterceptor(
@@ -44,8 +44,7 @@ class APIModule {
     }
 
     @Provides
-    fun WeatherService(retrofit: Retrofit): WeatherService =
-        retrofit.create(WeatherService::class.java)
+    fun WeatherService(retrofit: Retrofit): WeatherService = retrofit.create(WeatherService::class.java)
 
     @Provides
     fun GeoCodeService(retrofit: Retrofit): GeoService = retrofit.create(GeoService::class.java)

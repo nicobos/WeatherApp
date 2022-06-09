@@ -7,7 +7,7 @@ import com.nico.weatherapp.data.service.GeoService.responseModels.GeoCodeRespons
 import javax.inject.Inject
 
 class GeoCodeRepo @Inject constructor(
-    val geoService: GeoService
+    private val geoService: GeoService
 ): IGeoCodeRepo {
 
     override suspend fun geocodeLocationName(query: String): List<GeoCodeResponse> {

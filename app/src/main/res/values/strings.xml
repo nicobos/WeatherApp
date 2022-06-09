@@ -4,7 +4,15 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+
+    <!-- Strings for urls -->
+    <string name="icon_url">http://openweathermap.org/img/wn/%s.png</string>
+
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="temperature">%2.0f ºC</string>
+    <string name="precipitation">%2.0f%%</string>
+    <string name="permission_rationale_title">We need your location</string>
+    <string name="permission_rationale_description">\"Hi, for us to show you the weather at your current location, we will need your permission.  If you change your mind, just update the permission from the app settings. \"</string>
+    <string name="permission_rationale_neutral_button">Ok</string>
 </resources>
