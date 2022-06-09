@@ -27,6 +27,7 @@ Geocoding API - Geocoding device location to friendly name and reverse geocoding
    - Hilt dependancy injection 
    - Material 3 theme implementation
    - Google play services (device location)
+   - Figma (used to generate Material 3 colors)
 
 ## Missing functionality:
 
