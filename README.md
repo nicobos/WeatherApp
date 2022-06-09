@@ -28,6 +28,7 @@ Geocoding API - Geocoding device location to friendly name and reverse geocoding
    - Material 3 theme implementation
    - Google play services (device location)
    - Figma (used to generate Material 3 colors)
+   - **RoomDB - Only on feature branch offline_mode currently.  
 
 ## Missing functionality:
 
