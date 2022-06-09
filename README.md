@@ -30,7 +30,7 @@ Geocoding API - Geocoding device location to friendly name and reverse geocoding
 
 ## Missing functionality:
 
-# Offline mode
+### Offline mode
 The app currently doesn't support offline mode as time constraints didn't allow me to finish the implementation.  
 
 I have started implementation using roomDB to to store weather data and to observe the data from the database (using flow) and update the db from the api call.  
