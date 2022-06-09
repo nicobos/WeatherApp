@@ -9,7 +9,7 @@ Geocoding API - Geocoding device location to friendly name and reverse geocoding
 ## Overview
 
 ![Screenshot 2022-06-09 at 15 30 54](https://user-images.githubusercontent.com/5444730/172859167-98416504-8296-4c20-934f-85cde0b89e94.png)
-![Screenshot 2022-06-09 at 14 06 40](https://user-images.githubusercontent.com/5444730/172843043-39109d0b-d914-4bdf-bc60-f9fb4895b6ef.png)
+![Screenshot 2022-06-09 at 15 31 39](https://user-images.githubusercontent.com/5444730/172859344-eaa9337f-581f-480a-9af8-8b4ac336bfaa.png)
 
 
 ## App technology stack and architecture 
