@@ -1,9 +1,13 @@
 package com.nico.weatherapp.ui.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.nico.weatherapp.common.utils.DateTimeUtils
 import com.nico.weatherapp.data.service.WeatherService.responseModels.WeatherAPIResponse
 
+@Entity
 data class WeatherUI(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val temperature: Float,
     val feels_like: Float,
     val humidity: Int,

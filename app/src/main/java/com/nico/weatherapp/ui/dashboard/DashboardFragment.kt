@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.nico.weatherapp.R
 import com.nico.weatherapp.common.extensions.doIfError
 import com.nico.weatherapp.common.extensions.doIfSuccess
@@ -118,7 +119,10 @@ class DashboardFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_about -> {
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

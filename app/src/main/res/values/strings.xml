@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">WeatherApp</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="weather_fragment_label">Weather</string>
+    <string name="about_fragment_label">About</string>
 
     <!-- Strings for urls -->
     <string name="icon_url">http://openweathermap.org/img/wn/%s.png</string>
@@ -17,4 +17,29 @@
     <string name="permission_rationale_neutral_button">Ok</string>
     <string name="menu_item_search_title">Search</string>
     <string name="content_description_location">location</string>
+
+    <string name="about_us_api">API Used: https://openweathermap.org/api  </string>
+    <string name="about_us_description">A simple proof of concept weather app.</string>
+
+    <string name="about_us_dependancies"><b>App technology stack and architecture</b> \n
+   - Mockito \n
+   - Coroutines \n
+   - Viewbinding \n
+   - Recyclerview \n
+   - Roboelectric \n
+   - Retrofit/okhttp3 \n
+   - MVVM Architecture \n
+   - AndroidX libraries \n
+   - Repository pattern \n
+   - Coil (Image loading) \n
+   - Permissions (location) \n
+   - Flows / Flow operators \n
+   - Hilt dependancy injection \n
+   - Material 3 theme implementation \n
+   - Google play services (device location) \n
+   - Figma (used to generate Material 3 colors) \n
+   - **RoomDB - Only on feature branch offline_mode currently.  </string>
+    <string name="about_title">Description</string>
+    <string name="app_version">Version %s</string>
+
 </resources>

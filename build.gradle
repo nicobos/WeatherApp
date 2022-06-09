@@ -25,6 +25,7 @@ buildscript {
         hilt_android_compiler = "2.40.5"
         google_play = "19.0.1"
         timber = "5.0.1"
+        room = '2.4.2'
     }
     repositories {
         google()

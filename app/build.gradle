@@ -102,4 +102,10 @@ dependencies {
 
     /* Logging: Timber */
     implementation "com.jakewharton.timber:timber:${timber}"
+
+    // Room db
+    annotationProcessor "androidx.room:room-compiler:$room"
+    implementation "androidx.room:room-ktx:$room"
+    implementation "androidx.room:room-runtime:$room"
+    kapt "androidx.room:room-compiler:$room"
 }
