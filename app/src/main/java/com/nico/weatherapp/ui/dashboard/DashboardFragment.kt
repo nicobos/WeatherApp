@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.nico.weatherapp.R
 import com.nico.weatherapp.common.extensions.doIfError
 import com.nico.weatherapp.common.extensions.doIfSuccess
+import com.nico.weatherapp.common.extensions.hideKeyboard
 import com.nico.weatherapp.common.permissions.PermissionsManager
 import com.nico.weatherapp.databinding.FragmentDashboardBinding
 import com.nico.weatherapp.ui.dashboard.adapters.GeoCodeAdapter
@@ -76,6 +77,8 @@ class DashboardFragment : Fragment() {
         }
 
         dashBoardViewModel.weatherData.observe(viewLifecycleOwner) { result ->
+
+            requireActivity().hideKeyboard()
 
             result.doIfSuccess {
                 binding.temperature.text = getString(R.string.temperature, it?.temperature)
