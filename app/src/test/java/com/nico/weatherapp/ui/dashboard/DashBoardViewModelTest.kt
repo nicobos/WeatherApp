@@ -34,7 +34,7 @@ class DashBoardViewModelTest {
     @Mock
     lateinit var geoCodeRepo: IGeoCodeRepo
 
-    lateinit var locationRepo: ILocationRepo
+    private lateinit var locationRepo: ILocationRepo
 
     private lateinit var dashBoardViewModel: DashBoardViewModel
 

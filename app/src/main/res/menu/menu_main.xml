@@ -7,7 +7,7 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:imeOptions="actionSearch"
         android:inputType="textAutoComplete|textAutoCorrect"
-        android:title="Search"
+        android:title="@string/menu_item_search_title"
         app:actionLayout="@layout/search_custom"
         app:showAsAction="ifRoom|collapseActionView" />
     <item

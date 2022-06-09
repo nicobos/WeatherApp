@@ -2,7 +2,7 @@ package com.nico.weatherapp.ui.dashboard.models
 
 import com.nico.weatherapp.R
 import org.junit.Test
-import weather.android.dvt.co.za.weather.WeatherInfo.DataModels.WeatherRanges
+import com.nico.weatherapp.ui.models.WeatherRanges
 
 class WeatherRangeTest {
 

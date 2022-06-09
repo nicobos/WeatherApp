@@ -4,7 +4,7 @@ import org.junit.Test
 
 class DateTimeUtilsTests {
 
-    var systemUnderTest: DateTimeUtils = DateTimeUtils
+    private var systemUnderTest: DateTimeUtils = DateTimeUtils
 
     @Test
     fun `parseUnixTime should return the correct time formatted for the specific timezone`() {

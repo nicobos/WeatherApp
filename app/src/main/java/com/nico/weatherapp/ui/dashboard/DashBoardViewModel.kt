@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nico.weatherapp.common.extensions.doIfSuccess
 import com.nico.weatherapp.data.repositories.contract.IGeoCodeRepo
 import com.nico.weatherapp.data.repositories.contract.ILocationRepo
 import com.nico.weatherapp.data.repositories.contract.IWeatherRepo

@@ -24,7 +24,7 @@ class GeoCodeRepoTest {
     @Mock
     lateinit var geoService: GeoService
 
-    lateinit var repo: GeoCodeRepo
+    private lateinit var repo: GeoCodeRepo
 
     @Before
     fun setUp(){

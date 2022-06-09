@@ -14,7 +14,7 @@ import org.robolectric.annotation.Config
 @Config(sdk = [(Build.VERSION_CODES.P)])
 class LocationRepoTest {
 
-    lateinit var locationRepo: ILocationRepo
+    private lateinit var locationRepo: ILocationRepo
 
     @Before
     fun setUp() {

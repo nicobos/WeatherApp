@@ -1,4 +1,4 @@
-package weather.android.dvt.co.za.weather.WeatherInfo.DataModels
+package com.nico.weatherapp.ui.models
 
 import com.nico.weatherapp.R
 
@@ -10,8 +10,6 @@ object WeatherRanges {
     private val Atmosphere = IntRange(701, 799)
     private const val Clear = 800
     private val Clouds = IntRange(801, 899)
-    private val Extreme = IntRange(900, 909)
-    private val Extreme_additional = IntRange(910, 999)
 
     fun getImageResource(id: Int?): Int {
         var resourceId = 0

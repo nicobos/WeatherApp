@@ -18,8 +18,6 @@ package com.nico.weatherapp.ui.dashboard.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Typeface
-import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,25 +42,25 @@ class GeoCodeAdapter(
         return mResultList?.size ?: 0
     }
 
-    override fun getItem(position: Int): GeoCodeResponse? {
+    override fun getItem(position: Int): GeoCodeResponse {
         return mResultList!![position]
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view = convertView
-        var holder: viewHolder? = null
+        var holder: ViewHolder? = null
         val item = getItem(position)
 
         if (view == null) {
             val inflater =
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             view = inflater.inflate(listItemResId, parent, false) as View
-            holder = viewHolder()
+            holder = ViewHolder()
             holder.text1 = view.findViewById<View>(android.R.id.text1) as TextView
             holder.text2 = view.findViewById<View>(android.R.id.text2) as TextView
             view.tag = holder
         } else {
-            holder = view.tag as viewHolder
+            holder = view.tag as ViewHolder
         }
 
         val primary = item!!.name
@@ -120,7 +118,7 @@ class GeoCodeAdapter(
         }
     }
 
-    private fun getAutocomplete(constraint: CharSequence): List<GeoCodeResponse>? {
+    private fun getAutocomplete(constraint: CharSequence): List<GeoCodeResponse> {
         Timber.i("Starting autocomplete query for: %s", constraint)
 
         val results = mutableListOf<GeoCodeResponse>()
@@ -136,7 +134,7 @@ class GeoCodeAdapter(
         return results
     }
 
-    data class viewHolder(
+    data class ViewHolder(
         var text1: TextView? = null,
         var text2: TextView? = null
     )

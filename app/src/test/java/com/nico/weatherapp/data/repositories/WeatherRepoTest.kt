@@ -30,7 +30,7 @@ class WeatherRepoTest {
     @Mock
     lateinit var weatherService: WeatherService
 
-    lateinit var weatherRepo: IWeatherRepo
+    private lateinit var weatherRepo: IWeatherRepo
 
     @Before
     fun setUp() {

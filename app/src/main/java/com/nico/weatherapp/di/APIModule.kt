@@ -44,9 +44,9 @@ class APIModule {
     }
 
     @Provides
-    fun WeatherService(retrofit: Retrofit): WeatherService = retrofit.create(WeatherService::class.java)
+    fun weatherService(retrofit: Retrofit): WeatherService = retrofit.create(WeatherService::class.java)
 
     @Provides
-    fun GeoCodeService(retrofit: Retrofit): GeoService = retrofit.create(GeoService::class.java)
+    fun geoCodeService(retrofit: Retrofit): GeoService = retrofit.create(GeoService::class.java)
 
 }

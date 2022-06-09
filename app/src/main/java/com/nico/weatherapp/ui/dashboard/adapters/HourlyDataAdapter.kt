@@ -12,7 +12,7 @@ import com.nico.weatherapp.ui.models.HourlyDataItem
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.hourly_weather_list_item_layout.view.*
 
-class HourlyDataAdapter() : RecyclerView.Adapter<HourlyDataAdapter.HourlyDataViewHolder>() {
+class HourlyDataAdapter : RecyclerView.Adapter<HourlyDataAdapter.HourlyDataViewHolder>() {
 
     val data: MutableList<HourlyDataItem> = mutableListOf()
 
@@ -39,13 +39,17 @@ class HourlyDataAdapter() : RecyclerView.Adapter<HourlyDataAdapter.HourlyDataVie
 
         fun bind(data: HourlyDataItem) {
             containerView.time.text = DateTimeUtils.parseUnixTime(data.time, data.timezone)
-            containerView.temperature.text = containerView.context.getString(R.string.temperature,  data.temperature)
+            containerView.temperature.text =
+                containerView.context.getString(R.string.temperature, data.temperature)
             val url = containerView.context.getString(R.string.icon_url, data.icon)
             containerView.icon.load(url) {
                 size(containerView.context.resources.getDimensionPixelSize(R.dimen.weather_icon_size_small))
             }
             containerView.rain.text =
-                containerView.context.getString(R.string.precipitation, data.precipitation?.times(100) ?: 0.0)
+                containerView.context.getString(
+                    R.string.precipitation,
+                    data.precipitation.times(100)
+                )
         }
 
         companion object {

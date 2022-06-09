@@ -17,7 +17,7 @@ import com.nico.weatherapp.ui.dashboard.adapters.GeoCodeAdapter
 import com.nico.weatherapp.ui.dashboard.adapters.HourlyDataAdapter
 import com.nico.weatherapp.ui.dialogs.IDialogManager
 import dagger.hilt.android.AndroidEntryPoint
-import weather.android.dvt.co.za.weather.WeatherInfo.DataModels.WeatherRanges
+import com.nico.weatherapp.ui.models.WeatherRanges
 import javax.inject.Inject
 
 

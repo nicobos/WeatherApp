@@ -45,7 +45,7 @@
                     android:id="@+id/temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="18\u2103"
+                    tools:text="18\u2103"
                     android:textSize="40sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +54,7 @@
                     android:id="@+id/location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vredehoek"
+                    tools:text="Vredehoek"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/temperature" />
@@ -79,7 +79,7 @@
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sunny"
+                    tools:text="Sunny"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/location" />
 
@@ -141,7 +141,7 @@
                     android:id="@+id/titleSunrise"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sunrise"
+                    tools:text="Sunrise"
                     android:textColor="?attr/colorOnTertiary"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -182,7 +182,7 @@
                     android:id="@+id/titleSunset"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sunset"
+                    tools:text="Sunset"
                     android:textColor="?attr/colorOnTertiary"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
