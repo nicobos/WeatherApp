@@ -4,7 +4,7 @@ A simple proof of concept weather app.
 
 API Used: https://openweathermap.org/api  
 One Call API 3.0 - Weather Data  
-Geocoding API - Geocoding device location to friendly name and reverse geocoding search input name to coordinates for weather data cal  
+Geocoding API - Geocoding device location to friendly name and reverse geocoding search input name to coordinates for weather data    
 
 ## Overview
 
